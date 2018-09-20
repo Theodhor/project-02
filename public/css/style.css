@@ -1,0 +1,23 @@
+.centralizer {
+  text-align: center;
+  vertical-align: middle;
+}
+.submit {
+  font-size: 16px;
+  padding: 5px;
+  border: 2px solid black;
+}
+
+.home-head {
+  text-align: center;
+  vertical-align: middle;
+  margin-bottom: 30px;
+}
+
+.registration{
+  margin-bottom: 10px;
+}
+
+.loginer{
+  margin-top: 15px;
+}

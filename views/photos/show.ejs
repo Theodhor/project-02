@@ -1,0 +1,73 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-one-third">
+        <img src="<%= photo.image %>" alt="<%= photo.name %>" height="200" />
+        <h5 title is-5>
+          <% if(locals.isAuthenticated && !locals.currentUser._id.equals(photo.user._id)) { %>
+          <form action="/photos/<%= photo._id %>/like" method="post">
+            <button class="like">Like</button>
+            <% if(photo.likes.length > 0) { %>
+              <p> LIKES <%= photo.likes.length %> </p>
+              <% } %>
+          </form>
+          <% } %>
+        <% photo.comments.forEach(comment => { %>
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="<%= comment.user.profimage %>">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong><%= comment.user.username %></strong>
+                  <br>
+                  <%= comment.content %>
+                </p>
+              </div>
+            </div>
+            <div class="media-right">
+              <% if(locals.isAuthenticated && locals.currentUser._id.equals(comment.user._id)) { %>
+              <form action="/photos/<%= photo._id %>/comments/<%= comment._id %>" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button class="delete">Delete</button>
+              </form>
+              <% } %>
+            </div>
+          </article>
+        <% }) %>
+        </h5>
+      </div>
+      <div class="column is-two-thirds">
+        <h1 class="title"><%= photo.name %></h1>
+        <hr />
+        <h5 class="title is-5">About</h5>
+        <p><%= photo.about %></p>
+
+        <hr />
+        <form method="post" action="/photos/<%= photo._id %>/comments">
+          <div class="field">
+            <label class="label">Comment</label>
+            <div class="control">
+              <textarea class="textarea" name="content" placeholder="Comment (max 280 characters)">
+              </textarea>
+            </div>
+          </div>
+
+          <button class="button is-primary">Submit</button>
+        </form>
+
+        <hr />
+        <% if(locals.isAuthenticated && locals.currentUser._id.equals(photo.user._id)) { %>
+        <form action="/photos/<%= photo._id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button class="delete">Delete</button>
+        </form>
+        <a href="/photos/<%= photo._id %>/edit">Edit</a>
+        <% } %>
+      </div>
+    <div>
+  </div>
+</section>

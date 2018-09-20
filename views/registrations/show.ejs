@@ -1,0 +1,25 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-one-third">
+        <img src="<%= user.profimage %>" alt="<%= user.username %>" height="200" />
+      </div>
+      <div class="column is-two-thirds">
+        <h1 class="title"><%= user.username %></h1>
+        <hr />
+        <h5 class="title is-5">About</h5>
+        <p><%= user.about %></p>
+        <% if(locals.isAuthenticated) {%>
+        <a class="navbar-item" href="/photos">All the photos</a>
+        <% } %>
+        <% if(locals.isAuthenticated && locals.currentUser._id.equals(user._id)) {%>
+          <a class="navbar-item" href="/registrations/<%= user._id %>/photos">My photos</a>
+          <a class="navbar-item" href="/photos/new">Add a photo</a>
+          <a href="/registrations/<%= user._id %>/edit">Edit</a>
+        <% } else{ %>
+          <a class="navbar-item" href="/registrations/<%= user._id %>/photos"><%= user.username %> Photos</a>
+        <% } %>
+      </div>
+    <div>
+  </div>
+</section>

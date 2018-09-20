@@ -1,0 +1,43 @@
+<section class="section">
+
+  <div class="container">
+
+    <div class="columns is-multiline">
+
+      <% locals.user.photos.forEach(photo => { %>
+        <div class="column is-one-third-desktop is-half-tablet">
+
+          <div class="card">
+            <a href="/photos/<%= photo._id %>">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="<%= photo.image %>" alt="<%= photo.name %>">
+                </figure>
+              </div>
+
+              <div class="card-content">
+
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image is-48x48">
+                      <img src="<%= user.profimage %>" alt="Placeholder image">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                  <p> Author: <%= user.username %> </p>
+                  </div>
+                </div>
+
+              </div>
+
+            </a>
+          </div>
+
+        </div>
+      <% }) %>
+
+    </div>
+
+  </div>
+
+</section>

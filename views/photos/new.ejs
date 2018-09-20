@@ -1,0 +1,25 @@
+<section class="section">
+  <div class="container">
+
+
+
+    <form  action="/photos/new" method="post">
+      <div class="field">
+        <label class="label" for="name">Name</label>
+        <div class="control">
+          <input class="input" id="name" name="name" placeholder="Name" required minlength="2">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="image">Photo</label>
+        <div class="control">
+          <input class="input" id="image" name="image" placeholder="image" required   pattern="^https?://.+">
+        </div>
+      </div>
+
+      <button class="button is-primary">Submit</button>
+    </form>
+
+  </div>
+</section>

@@ -1,0 +1,17 @@
+<h1>EDIT PAGE</h1>
+<h2>A populated form</h2>
+
+<form  action="/registrations/<%= user._id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" name="name" placeholder="Name" value="<%= user.name %>" required minlength="2"/>
+  </div>
+
+  <div>
+    <label for="image">ProfileImage</label>
+    <input id="image" name="image" placeholder="image" value="<%= user.image %>" required pattern="^https?://.+" />
+  </div>
+
+  <button>Submit</button>
+</form>
