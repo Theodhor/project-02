@@ -1,7 +1,7 @@
-
-console.log('Js loaded');
-
 document.addEventListener('DOMContentLoaded', () => {
+
+
+
   const deleteBtns = document.querySelectorAll('.delete');
   deleteBtns.forEach(button => {
     button.addEventListener('click', (e) => {

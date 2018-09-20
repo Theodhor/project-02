@@ -11,10 +11,6 @@
     <body>
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href=>
-            <img src="https://avatars.git.generalassemb.ly/u/8709?s=400" alt="General Assembly" width="112" height="28">
-          </a>
-
           <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -36,6 +32,11 @@
           </div>
         </div>
       </nav>
+      <form  action="/error" method="post">
+        <div class="centralizer">
+          <button class="remove">DANGER</button>
+        </div>
+      </form>
 
 
       <% for (const type in messages) { %>

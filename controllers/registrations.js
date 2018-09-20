@@ -22,8 +22,8 @@ function indexRoute(req, res) {
 }
 
 function editRoute(req, res){
-  User.findById(req.params.id, (err, photo) => {
-    res.render('registrations/edit', { photo });
+  User.findById(req.params.id, (err, user) => {
+    res.render('registrations/edit', { user });
   });
 }
 

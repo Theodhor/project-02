@@ -5,10 +5,14 @@
         <img src="<%= photo.image %>" alt="<%= photo.name %>" height="200" />
         <h5 title is-5>
           <% if(locals.isAuthenticated && !locals.currentUser._id.equals(photo.user._id)) { %>
-          <form action="/photos/<%= photo._id %>/like" method="post">
-            <button class="like">Like</button>
+          <form class="like-form" action="/photos/<%= photo._id %>/like" method="post">
+        <% if(!photo.likes.find(like => like.equals(locals.currentUser._id))){ %>
+            <button class="like">I like it</button>
+        <% } else { %>
+            <button class="like">Retreat you like</button>
+        <% } %>
             <% if(photo.likes.length > 0) { %>
-              <p> LIKES <%= photo.likes.length %> </p>
+              <p class="like"> LIKES <%= photo.likes.length %> </p>
               <% } %>
           </form>
           <% } %>
@@ -55,17 +59,22 @@
               </textarea>
             </div>
           </div>
-
-          <button class="button is-primary">Submit</button>
+          <div class="centralizer">
+            <button class="submit">Submit</button>
+          </div>
         </form>
 
         <hr />
         <% if(locals.isAuthenticated && locals.currentUser._id.equals(photo.user._id)) { %>
-        <form action="/photos/<%= photo._id %>" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <button class="delete">Delete</button>
-        </form>
-        <a href="/photos/<%= photo._id %>/edit">Edit</a>
+          <form action="/photos/<%= photo._id %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <div class="centralizer">
+              <button class="remove">Remove Photo</button>
+            </div>
+          </form>
+          <a href="/photos/<%= photo._id %>/edit">
+             <div class="centralizer"> Edit <div>
+          </a>
         <% } %>
       </div>
     <div>
